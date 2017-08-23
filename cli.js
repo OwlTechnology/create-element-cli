@@ -1,9 +1,10 @@
 #! /usr/bin/env node
 
 const fs = require('fs');
+const stampTemplate = require('./helpers/stampTemplate.js');
+const convertTagNameToClassName = require("./helpers/convertTagNameToClassName.js");
 
-const TEMPLATE_STRING_REGEX = /\/\*[ ]?{(?:[a-z]|[A-Z])*}[ ]?\*\//g;
-
+// Get the element name from the args
 const elementName = process.argv[2];
 
 if(!elementName) {
@@ -12,51 +13,20 @@ if(!elementName) {
     process.exit(1);
 }
 
-function fillValue(str, config) {
-    const valueName = str.replace(/([}]?[ ]?[\/|\*][\/|\*][ ]?[{]?)/g, "");
-
-    if(typeof config[valueName] !== 'undefined') {
-        return config[valueName].toString();
-    } else {
-        return "";
-    }
-}
-
-function convertTagNameToClassName(tagName) {
-    const split = tagName.split("-");
-    let output = "";
-
-    for(let x = 0; x < split.length; x++) {
-        const word = split[x];
-
-        output += capitalizeFirstLetter(word);
-    }
-
-    return output;
-}
-
-function capitalizeFirstLetter(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
 // if we have an element name, we're good, let's make the template
-const rawTemplate = fs.readFileSync("./templates/singleElement.js").toString();
-const splitTemplate = rawTemplate.split(TEMPLATE_STRING_REGEX);
+const rawTemplate = fs
+    .readFileSync(require.resolve("./templates/singleElement.js"))
+    .toString();
 
-let replaceConfig = {
+const stamp = stampTemplate(rawTemplate, {
     className: convertTagNameToClassName(elementName),
     tagName: elementName
-};
+});
 
-let output = splitTemplate[0];
-let splitTemplateIndex = 1;
+// Now write to file
+const path = process.cwd() + "/" + elementName + ".js";
 
-while(match = TEMPLATE_STRING_REGEX.exec(rawTemplate)) {
-    const result = fillValue(match[0], replaceConfig);
+fs.writeFileSync(path, stamp);
 
-    output += result;
-    output += splitTemplate[splitTemplateIndex];
-    ++ splitTemplateIndex;
-}
-
-console.log(output);
+// and we're done
+process.exit(0);
