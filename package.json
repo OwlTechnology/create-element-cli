@@ -1,0 +1,30 @@
+{
+  "name": "create-element-cli",
+  "version": "0.1.0",
+  "description": "",
+  "main": "cli.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OwlTechnology/create-element-cli.git"
+  },
+  "keywords": [
+    "cli",
+    "tool",
+    "elements",
+    "custom",
+    "element",
+    "create"
+  ],
+  "author": "Owl Technology",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OwlTechnology/create-element-cli/issues"
+  },
+  "homepage": "https://github.com/OwlTechnology/create-element-cli#readme",
+  "bin": {
+    "create-element": "cli.js"
+  }
+}
