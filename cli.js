@@ -2,9 +2,13 @@
 const template = require('./helpers/buildTemplate.js');
 const arguments = require('./helpers/arguments.js');
 
-// Check against the arguments and run the correct action
-arguments.CheckArgumentFormat();  
+// Check the formatting of our arguments
+if(!arguments.ArgumentsHaveElementName()) {
+    console.log("No element name specified");
+    process.exit(1);
+}
 
+// Check against the arguments and run the correct action
 switch(process.argv[2].toLowerCase()) {
     case arguments.MODULE:
         // Code that is ran if a use passes the --module flag
