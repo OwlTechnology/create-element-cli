@@ -22,3 +22,20 @@ create-element [element-name]
 This will create `[element-name].js` in the folder where the command was run, 
 where `[element-name]` is the name of the literal element that you want to
 create.
+
+## Create a Module
+
+To create an element as it's own project/module, run the following:
+
+```CLI
+create-element --module [element-name]
+```
+
+This will create: 
+
+- [element-name].js
+- readme.md
+- demo.html
+- .gitignore
+
+
