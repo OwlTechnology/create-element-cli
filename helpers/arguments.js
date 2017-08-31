@@ -1,4 +1,4 @@
-const template = require('./buildtemplate.js');
+const template = require('./buildTemplate.js');
 
 const MODULE = '--module';
 
@@ -27,7 +27,8 @@ const ChooseAction = () => {
             let elementName = process.argv[3];
             template.CreateElementTemplate(elementName);
             template.CreateFileTemplate(elementName, "readme.md");
-            console.log(`${process.argv[2]} module was successfully created!`);
+            template.CopyFile('.gitignore');
+            console.log(`${elementName} module was successfully created!`);
             break
         default:
             // Code that is ran if no argument profile is matched

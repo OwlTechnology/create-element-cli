@@ -33,3 +33,8 @@ module.exports.CreateFileTemplate = (elementName, fileName) => {
 
     fs.writeFileSync(path, stamp);
 }
+
+module.exports.CopyFile = (fileName) => {
+    let content = fs.readFileSync(`./../templates/${fileName}`, "utf-8");
+    fs.writeFileSync(`${process.cwd()}/${fileName}`, content, "utf-8");
+}
