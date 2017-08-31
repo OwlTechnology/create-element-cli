@@ -3,7 +3,11 @@
 const fs = require('fs');
 const stampTemplate = require('./helpers/stampTemplate.js');
 const convertTagNameToClassName = require("./helpers/convertTagNameToClassName.js");
+const arguments = require('./helpers/arguments.js');
 
+arguments.ChooseAction();
+
+/*
 // Get the element name from the args
 const elementName = process.argv[2];
 
@@ -30,3 +34,4 @@ fs.writeFileSync(path, stamp);
 
 // and we're done
 process.exit(0);
+*/
