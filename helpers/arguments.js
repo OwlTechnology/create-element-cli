@@ -27,6 +27,7 @@ const ChooseAction = () => {
             let elementName = process.argv[3];
             template.CreateElementTemplate(elementName);
             template.CreateFileTemplate(elementName, "readme.md");
+            template.CreateFileTemplate(elementName, "demo.html");
             template.CopyFile('.gitignore');
             console.log(`${elementName} module was successfully created!`);
             break
