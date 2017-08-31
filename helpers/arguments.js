@@ -1,3 +1,5 @@
+const BuildTemplate = require('./buildtemplate.js');
+
 const MODULE = '--module';
 
 /**
@@ -26,7 +28,8 @@ const ChooseAction = () => {
             break
         default:
             // Code that is ran if no argument profile is matched
-            console.log("blue");
+            BuildTemplate(process.argv[2]);
+            
     }
 }
 
