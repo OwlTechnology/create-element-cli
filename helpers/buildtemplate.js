@@ -2,7 +2,7 @@ const fs = require('fs');
 const stampTemplate = require('./stampTemplate.js');
 const convertTagNameToClassName = require("./convertTagNameToClassName.js");
 
-module.exports = (elementName) => {
+module.exports.CreateElementTemplate = (elementName) => {
     const rawTemplate = fs
     .readFileSync(require.resolve("./../templates/singleElement.js"))
     .toString();
@@ -14,6 +14,22 @@ module.exports = (elementName) => {
 
     // Now write to file
     const path = process.cwd() + "/" + elementName + ".js";
+
+    fs.writeFileSync(path, stamp);
+}
+
+module.exports.CreateFileTemplate = (elementName, fileName) => {
+    const rawTemplate = fs
+    .readFileSync(require.resolve(`./../templates/${fileName}`))
+    .toString();
+
+    const stamp = stampTemplate(rawTemplate, {
+        className: convertTagNameToClassName(elementName),
+        tagName: elementName
+    });
+
+    // Now write to file
+    const path = process.cwd() + "/" + fileName;
 
     fs.writeFileSync(path, stamp);
 }
