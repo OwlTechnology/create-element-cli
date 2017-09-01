@@ -18,7 +18,7 @@ const elementName = args.getArgumentByIndex(0);
 if(args.hasFlag(arguments.MODULE)) {
     template.createElementTemplate(elementName);
     template.createFileTemplates(elementName, ["readme.md", "demo.html"]);
-    template.copyFile('.gitignore');
+    template.copyFileTo('gitignore', '.gitignore');
 
     console.log(`${elementName} module was successfully created!`);
 } else {
