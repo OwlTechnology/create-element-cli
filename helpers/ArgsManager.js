@@ -35,10 +35,24 @@ class ArgsManager {
             }
         }
 
+        /**
+         * Retrieves an argument by it's index. An argument's index is
+         * determined assuming that no flags, starting parameters, or 
+         * parameters are present.
+         * 
+         * @param {Integer} index the index of the argument to retrieve.
+         * 
+         * @return {String} the value of the argument at the given index, or 
+         *  undefined if nothing was at the specified index.
+         */
         getArgumentByIndex(index) {
             return this.floatingArgs[index];
         }
 
+        /**
+         * Gets the amount of arguments available, where an argument is anything
+         * that isn't a parameter or a flag that was passed to the command.
+         */
         getAmountOfArguments() {
             return this.floatingArgs.length;
         }
