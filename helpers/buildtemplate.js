@@ -50,6 +50,10 @@ module.exports.createFileTemplates = (elementName, fileNames) => {
  * Copy a file form teh template folder to the new directory
  */
 module.exports.copyFile = (fileName) => {
+    module.exports.copyFileTo(fileName, fileName);
+}
+
+module.exports.copyFileTo = (fileName, newName) => {
     const content = fs.readFileSync(require.resolve(`./../templates/${fileName}`), "utf-8");
-    fs.writeFileSync(`${process.cwd()}/${fileName}`, content, "utf-8");
+    fs.writeFileSync(`${process.cwd()}/${newName}`, content, "utf-8");
 }
