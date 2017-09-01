@@ -1,5 +1,5 @@
 
-module.exports.MODULE = '--module';
+module.exports.MODULE = 'module';
 
 /**
  * Check to make sure we have an element name
