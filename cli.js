@@ -2,27 +2,28 @@
 const template = require('./helpers/buildTemplate.js');
 const arguments = require('./helpers/arguments.js');
 
+const args = process.argv;
+
 // Check the formatting of our arguments
-if(!arguments.ArgumentsHaveElementName()) {
+if(!arguments.argumentsHaveElementName(args)) {
     console.log("No element name specified");
     process.exit(1);
 }
 
 // Check against the arguments and run the correct action
-switch(process.argv[2].toLowerCase()) {
+switch(args[2].toLowerCase()) {
     case arguments.MODULE:
         // Code that is ran if a use passes the --module flag
-        let elementName = process.argv[3];
-        template.CreateElementTemplate(elementName);
-        template.CreateFileTemplate(elementName, "readme.md");
-        template.CreateFileTemplate(elementName, "demo.html");
-        template.CopyFile('.gitignore');
+        const elementName = args[3];
+        template.createElementTemplate(elementName);
+        template.createFileTemplates(elementName, ["readme.md", "demo.html"]);
+        template.copyFile('.gitignore');
         console.log(`${elementName} module was successfully created!`);
         break
     default:
         // Code that is ran if no argument profile is matched
-        template.CreateElementTemplate(process.argv[2]);
-        console.log(`${process.argv[2]} was successfully created!`);
+        template.createElementTemplate(args[2]);
+        console.log(`${args[2]} was successfully created!`);
         
 }
 

@@ -1,5 +1,5 @@
 # /* {tagName} */
-An HTML custom element implementing the `</* {tagName} */>` tag.
+A HTML custom element implementing the `</* {tagName} */>` tag.
 
 [ Add a nice image here ]
 

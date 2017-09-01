@@ -5,7 +5,7 @@ const convertTagNameToClassName = require("./convertTagNameToClassName.js");
 /**
  * Create the template custom element file
  */
-module.exports.CreateElementTemplate = (elementName) => {
+module.exports.createElementTemplate = (elementName) => {
     const rawTemplate = fs
     .readFileSync(require.resolve("./../templates/singleElement.js"))
     .toString();
@@ -24,10 +24,10 @@ module.exports.CreateElementTemplate = (elementName) => {
 /**
  * Copy and template a given file with the custom element information
  */
-module.exports.CreateFileTemplate = (elementName, fileName) => {
+module.exports.createFileTemplate = (elementName, fileName) => {
     const rawTemplate = fs
-    .readFileSync(require.resolve(`./../templates/${fileName}`))
-    .toString();
+        .readFileSync(require.resolve(`./../templates/${fileName}`))
+        .toString();
 
     const stamp = stampTemplate(rawTemplate, {
         className: convertTagNameToClassName(elementName),
@@ -40,10 +40,16 @@ module.exports.CreateFileTemplate = (elementName, fileName) => {
     fs.writeFileSync(path, stamp);
 }
 
+module.exports.createFileTemplates = (elementName, fileNames) => {
+    for(let i = 0; i < fileNames.length; i++) {
+        module.exports.createFileTemplate(elementName, fileNames[i]);
+    }
+}
+
 /**
  * Copy a file form teh template folder to the new directory
  */
-module.exports.CopyFile = (fileName) => {
-    let content = fs.readFileSync(`./../templates/${fileName}`, "utf-8");
+module.exports.copyFile = (fileName) => {
+    const content = fs.readFileSync(require.resolve(`./../templates/${fileName}`), "utf-8");
     fs.writeFileSync(`${process.cwd()}/${fileName}`, content, "utf-8");
 }

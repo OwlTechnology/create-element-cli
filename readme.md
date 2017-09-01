@@ -38,4 +38,4 @@ This will create:
 - demo.html
 - .gitignore
 
-
+in your current working directory.
