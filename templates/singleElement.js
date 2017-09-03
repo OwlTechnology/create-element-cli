@@ -1,3 +1,4 @@
+(function(){
 /**
  * The template that is used for the shadow root for every copy of your element,
  * which houses the styles and layout for the element.
@@ -68,3 +69,4 @@ class /* {className} */ extends HTMLElement {
 }
 
 customElements.define("/* {tagName} */", /* {className} */);
+})();
