@@ -39,3 +39,14 @@ This will create:
 - .gitignore
 
 in your current working directory.
+
+
+## Build & Scope an element
+
+To uglify and scope a custom element so that it's usuable for the browser, run the following:
+
+```CLI
+create-element --buid [element-name]
+```
+
+This command will look for `[element-name].js` in the current directory and produce the a `[element-name].min.js` file in the same directory. 
