@@ -1,5 +1,6 @@
 
 module.exports.MODULE = 'module';
+module.exports.BUILD = 'build';
 
 /**
  * Check to make sure we have an element name

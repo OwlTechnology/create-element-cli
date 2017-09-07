@@ -26,5 +26,8 @@
   "homepage": "https://github.com/OwlTechnology/create-element-cli#readme",
   "bin": {
     "create-element": "cli.js"
+  },
+  "dependencies": {
+    "uglify-es": "^3.0.28"
   }
 }

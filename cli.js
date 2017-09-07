@@ -2,6 +2,7 @@
 const template = require('./helpers/buildTemplate.js');
 const arguments = require('./helpers/arguments.js');
 const ArgsManager = require("./helpers/ArgsManager");
+const build = require('./helpers/build');
 
 const args = new ArgsManager();
 
@@ -21,6 +22,9 @@ if(args.hasFlag(arguments.MODULE)) {
     template.copyFileTo('gitignore', '.gitignore');
 
     console.log(`${elementName} module was successfully created!`);
+} else if(args.hasFlag(arguments.BUILD)){
+    build.buildFile(elementName);
+    console.log(`${elementName} has been built.`);
 } else {
     template.createElementTemplate(elementName);
     console.log(`${elementName} was successfully created!`);

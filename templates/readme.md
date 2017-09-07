@@ -13,7 +13,7 @@ npm i /* {tagName} */
 ---
 
 ```Html
-<script src="node_modules//* {tagName} *///* {tagName} */.js"></script>
+<script src="node_modules//* {tagName} *///* {tagName} */.min.js"></script>
 ```
 or if you're bundling
 ```Javascript
